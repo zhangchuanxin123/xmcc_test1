@@ -1,0 +1,16 @@
+Starting WxSellApplication on PC-ADMIN with PID 2388 (E:\javaxiangmu\wx_sell\target\classes started by Administrator in E:\javaxiangmu\wx_sell)
+No active profile set, falling back to default profiles: default
+Tomcat initialized with port(s): 8888 (http)
+Initializing ProtocolHandler ["http-nio-8888"]
+Starting service [Tomcat]
+Starting Servlet engine: [Apache Tomcat/9.0.17]
+Initializing Spring embedded WebApplicationContext
+Root WebApplicationContext: initialization completed in 814 ms
+Initializing ExecutorService 'applicationTaskExecutor'
+Starting ProtocolHandler ["http-nio-8888"]
+Tomcat started on port(s): 8888 (http) with context path ''
+Started WxSellApplication in 1.559 seconds (JVM running for 2.07)
+Initializing Spring DispatcherServlet 'dispatcherServlet'
+Initializing Servlet 'dispatcherServlet'
+Completed initialization in 4 ms
+log -> hello logback info slf4j
