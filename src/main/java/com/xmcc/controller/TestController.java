@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
 
    /* Logger logger = LoggerFactory.getLogger(TestController.class);*/
-   /* Logger logger = LoggerFactory.getLogger(TestController.class);*/
     @GetMapping("/hello")
     public String test(){
         log.info("log -> {}","hello logback info slf4j");
