@@ -1,6 +1,7 @@
 package com.xmcc.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicUpdate;
@@ -16,6 +17,7 @@ import java.util.Date;
     @AllArgsConstructor //全参构造
     @NoArgsConstructor //无参构造
     @Table(name="product_category") //表名
+    @Builder
     public class ProductCategory implements Serializable {
 
         /** 类目id. */

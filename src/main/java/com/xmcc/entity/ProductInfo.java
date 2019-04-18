@@ -1,6 +1,9 @@
 package com.xmcc.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.Entity;
@@ -13,6 +16,9 @@ import java.util.Date;
 @Data
 @DynamicUpdate
 @Table(name="product_info") //按照了去掉下划线首字母大写的规则 就可以不用指定
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class ProductInfo {
 
     @Id

@@ -1,6 +1,7 @@
 package com.xmcc.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicUpdate;
@@ -15,6 +16,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Table(name = "student")
 @Entity
+@Builder
 public class Student implements Serializable {
     @Id//主键
     @GeneratedValue(strategy = GenerationType.IDENTITY) //表示自增IDENTITY：mysql SEQUENCE:oracle  //主键生成策略

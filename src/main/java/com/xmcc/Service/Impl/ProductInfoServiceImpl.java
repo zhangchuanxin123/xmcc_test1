@@ -1,6 +1,7 @@
 package com.xmcc.Service.Impl;
 
 import com.xmcc.Service.ProductInfoService;
+import com.xmcc.common.ProductEnums;
 import com.xmcc.common.ResultEnums;
 import com.xmcc.common.ResultResponse;
 import com.xmcc.dto.ProductCategoryDto;
@@ -9,11 +10,13 @@ import com.xmcc.entity.ProductCategory;
 import com.xmcc.entity.ProductInfo;
 import com.xmcc.repository.ProductCategoryRepository;
 import com.xmcc.repository.ProductInfoRepoisitory;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -54,5 +57,36 @@ public class ProductInfoServiceImpl implements ProductInfoService {
             return productCategoryDto;
         }).collect(Collectors.toList());
         return ResultResponse.success(productCategoryDtos);
+    }
+
+    @Override
+    public ResultResponse<ProductInfo> queryById(String productId) {
+        //参数异常
+        if(StringUtils.isBlank(productId)){
+            return ResultResponse.fail(ResultEnums.PARAM_ERROR.getMsg());
+        }
+        //查找商品,用操作类包装
+        Optional<ProductInfo> byId = productInfoRepoisitory.findById(productId);
+
+        //调用操作类方法，检查商品是否存在
+        if(!byId.isPresent()){
+            return ResultResponse.fail(ResultEnums.NOT_EXITS.getMsg());
+        }
+
+        //用操作类获取商品
+        ProductInfo productInfo = byId.get();
+
+        //判断商品状态，是否下架
+        if(productInfo.getProductStatus() == ResultEnums.PRODUCT_NOT_ENOUGH.getCode()){
+            return ResultResponse.fail(ResultEnums.PRODUCT_NOT_ENOUGH.getMsg());
+        }
+
+
+        return ResultResponse.success(productInfo);
+    }
+
+    @Override
+    public void updateProduct(ProductInfo productInfo) {
+        productInfoRepoisitory.save(productInfo);
     }
 }
